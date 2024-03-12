@@ -2,8 +2,8 @@ import React from 'react'
 import img from "../../assets/images/login/login.svg"
 import { Link } from 'react-router-dom'
 
-const Login = () => {
-    const handleLogin = event =>{
+const SignUp = () => {
+    const handleSignUp = event =>{
         event.preventDefault()
     }
   return (
@@ -14,17 +14,23 @@ const Login = () => {
      <img src={img} alt="" />
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form onSubmit={handleLogin} className="card-body">
-      <h1 className="text-2xl  font-bold">Login now</h1>
+      <form onSubmit={handleSignUp} className="card-body">
+      <h1 className="text-2xl  font-bold">Sign Up</h1>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input type="name" name='name' placeholder="name" className="input input-bordered" required />
+        </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" name='email' className="input input-bordered" required />
+          <input type="email"name='email' placeholder="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Password</span>
+            <span className="label-text">Confirm Password</span>
           </label>
           <input type="password" placeholder="password" name='password' className="input input-bordered" required />
           <label className="label">
@@ -33,11 +39,11 @@ const Login = () => {
         </div>
         <div className="form-control mt-6">
          
-          <input className="btn btn-primary" type="submit" value="Login" />
+          <input className="btn btn-primary" type="submit" value="Sign Up" />
         </div>
       </form>
       <div>
-        <p className='my-4 text-center'>New to Car Doctor?  <Link className='text-orange-600' to="/signup">Sign Up</Link></p>
+        <p className='my-4 text-center'>Already sign up? please  <Link className='text-orange-600' to="/login">Login</Link></p>
       </div>
     </div>
   </div>
@@ -45,4 +51,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp
