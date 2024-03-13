@@ -1,14 +1,15 @@
 import React from 'react'
+import Swal from 'sweetalert2';
 
-const BookingRow = ({booking}) => {
-    const {customerName,email,price,img,service,date} = booking
+const BookingRow = ({booking,handleDelete}) => {
+    const {price,img,service,date,_id} = booking
+
+    
   return (
+
+    
     <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+        
         <td>
         <div className="avatar">
               <div className="rounded w-24 h-24">
@@ -23,7 +24,7 @@ const BookingRow = ({booking}) => {
         <td>{date}</td>
         <td>${price}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <button onClick={() => handleDelete(_id)} className="btn btn-ghost bg-red-600 text-white uppercase btn-xs">delete</button>
         </th>
       </tr>
   )
