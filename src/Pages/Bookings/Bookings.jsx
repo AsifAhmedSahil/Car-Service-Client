@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
+import BookingRow from './BookingRow'
 
 const Bookings = () => {
     const {user} = useContext(AuthContext)
     const [bookings,setBookings] = useState([])
-    const url = `http://localhost:5000/bookings?email=${user.email}`
+    const url = `http://localhost:5000/bookings?email=${user?.email}`
     
     useEffect(() =>{
         fetch(url)
@@ -14,9 +15,37 @@ const Bookings = () => {
         })
     },[])
   return (
-    <div>
+    <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr >
+        <th className='font-bold'>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <th className='font-bold'>Image</th>
+        <th className='font-bold'>Services</th>
+        <th className='font-bold'>Date</th>
+        <th className='font-bold'>Prices</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
       
-    </div>
+      {
+        bookings.map(booking => <BookingRow key={booking._id} booking={booking}></BookingRow>)
+      }
+      
+      
+      
+      
+    </tbody>
+    
+    
+  </table>
+</div>
   )
 }
 
