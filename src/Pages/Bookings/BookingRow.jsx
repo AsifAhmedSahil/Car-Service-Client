@@ -1,8 +1,8 @@
 import React from 'react'
 import Swal from 'sweetalert2';
 
-const BookingRow = ({booking,handleDelete}) => {
-    const {price,img,service,date,_id} = booking
+const BookingRow = ({booking,handleDelete,handleBookingConfirm}) => {
+    const {price,img,service,date,_id,status} = booking
 
     
   return (
@@ -25,6 +25,10 @@ const BookingRow = ({booking,handleDelete}) => {
         <td>${price}</td>
         <th>
           <button onClick={() => handleDelete(_id)} className="btn btn-ghost bg-red-600 text-white uppercase btn-xs">delete</button>
+        </th>
+        <th>
+          { status === 'confirm' ? <span className='text-purple-600 font-bold'>Confirmed</span>:
+            <button onClick={() => handleBookingConfirm(_id)} className="btn btn-primary rounded-xl">Please Confirm</button>}
         </th>
       </tr>
   )
